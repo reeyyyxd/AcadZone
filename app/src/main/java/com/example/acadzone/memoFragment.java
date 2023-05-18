@@ -22,6 +22,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import android.widget.ArrayAdapter;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 import java.util.ListIterator;
 
@@ -71,6 +73,14 @@ public class memoFragment extends Fragment {
             // view.findViewById
         super.onViewCreated(view, savedInstanceState);
 
+        FloatingActionButton fab = view.findViewById(R.id.add_memo);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MemoEditorActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
         if(memo.isEmpty()) {

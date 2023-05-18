@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/add_memo" android:title="Add Memo"></item>
+    <item android:id="@+id/add_memo"
+        android:icon="@drawable/addmemo"
+        android:title="Add Memo"></item>
 
 </menu>

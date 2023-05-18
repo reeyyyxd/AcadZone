@@ -1,5 +1,6 @@
 package com.example.acadzone;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,10 +13,16 @@ public class MemoEditorActivity extends AppCompatActivity {
 
     int memoId;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo_editor);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         EditText editText= (EditText) findViewById(R.id.editText);
         Intent intent= getIntent();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/memo"
     android:layout_width="match_parent"
@@ -7,8 +8,41 @@
     android:gravity="center"
     tools:context=".memoFragment">
 
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="175dp"
+        android:layout_height="78dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="212dp"
+        android:layout_marginBottom="630dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Memos"
+        android:textSize="34sp" />
+
     <ListView
         android:id="@+id/listView"
-        android:layout_width="696dp"
-        android:layout_height="1062dp" />
+        android:layout_width="match_parent"
+        android:layout_height="502dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="202dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_memo"
+        android:layout_width="81dp"
+        android:layout_height="81dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="120dp"
+        app:backgroundTint="@color/purple_500"
+        app:menu="@menu/add_memo_menu"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:tint="#fff" />
+
 </RelativeLayout>

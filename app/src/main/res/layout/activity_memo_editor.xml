@@ -9,12 +9,13 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="395dp"
-        android:layout_height="796dp"
+        android:layout_width="392dp"
+        android:layout_height="846dp"
         android:ems="10"
         android:gravity="top|left"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="26dp" />
+        tools:layout_editor_absoluteY="173dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
