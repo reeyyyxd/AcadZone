@@ -106,7 +106,7 @@ public class memoFragment extends Fragment {
                     final int delete= i;
 
                     new AlertDialog.Builder(requireContext())
-                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setIcon(R.drawable.deletememo)
                             .setTitle("Are you sure?")
                             .setMessage("Do you want to delete this memo?")
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
