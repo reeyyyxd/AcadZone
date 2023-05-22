@@ -20,11 +20,21 @@ public class Note {
     @ColumnInfo(name ="content")
     private String content;
 
+    public Note() {
+
+    }
 
     @Ignore
     public Note(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public Note(int id, String title, String content) {
+        this.title = title;
+        this.content = content;
+        this.id=id;
+
     }
 
     public int getId() {

@@ -14,19 +14,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class notesFragment extends Fragment {
+import java.util.ArrayList;
+
+public class notesFragment extends Fragment implements RecyclerNotesAdapter.NotesInterface {
 
     Button btnCreateNote;
     FloatingActionButton fabAdd;
     RecyclerView recyclerNotes;
     View view;
+    DatabaseHelper databaseHelper;
+    LinearLayout noNotes;
 
-    EditText editTitle, editContent;
-    Button btnAdd;
+
+    @Override
+    public void onNoteDelete() {
+        showNotes();
+    }
 
     public notesFragment(){
         //required empty.
@@ -43,6 +51,7 @@ public class notesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initVar();
+        showNotes();
 
 
         fabAdd.setOnClickListener(new View.OnClickListener(){
@@ -52,6 +61,12 @@ public class notesFragment extends Fragment {
                 Dialog dialog = new Dialog(getContext());
                dialog.setContentView(R.layout.add_note);
 
+                EditText editTitle, editContent;
+                Button btnAdd;
+
+                editTitle= dialog.findViewById(R.id.editTitle);
+                editContent= dialog.findViewById(R.id.editContent);
+                btnAdd= dialog.findViewById(R.id.btnAdd);
 
 
                 btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -62,20 +77,23 @@ public class notesFragment extends Fragment {
 
                         if(!content.equals("")){
 
+                            databaseHelper.noteData().addNote(new Note(title,content));
+                            showNotes();
 
+                            dialog.dismiss();
                         }
                         else{
                             Toast.makeText(getContext(),"Please enter",Toast.LENGTH_SHORT).show();
                         }
-
-
                     }
                 });
-
+                    dialog.show();
 
 
 
             }
+
+
         });
 
         btnCreateNote.setOnClickListener(new View.OnClickListener(){
@@ -87,11 +105,31 @@ public class notesFragment extends Fragment {
 
     }
 
+    public void showNotes() {
+        ArrayList<Note> arrNotes= (ArrayList<Note>) databaseHelper.noteData().getNotes();
+
+        if(arrNotes.size()>0){
+            recyclerNotes.setVisibility(View.VISIBLE);
+            noNotes.setVisibility(View.GONE);
+
+            RecyclerNotesAdapter adapter = new RecyclerNotesAdapter(getContext(), arrNotes, databaseHelper, this); // <-- pass the instance of notesFragment
+            recyclerNotes.setAdapter(adapter);
+        }
+        else {
+            noNotes.setVisibility(View.VISIBLE);
+            recyclerNotes.setVisibility(View.GONE);
+        }
+    }
+
     private void initVar(){
         btnCreateNote = view.findViewById(R.id.btnCreateNote);
         fabAdd = view.findViewById(R.id.fabAdd);
         recyclerNotes = view.findViewById(R.id.recyclerNotes);
+        noNotes= view.findViewById(R.id.noNotes);
 
         recyclerNotes.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        databaseHelper = DatabaseHelper.getInstance(getContext().getApplicationContext());
+
     }
 }
