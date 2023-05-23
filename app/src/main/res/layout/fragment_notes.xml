@@ -26,20 +26,20 @@
      <TextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="So Clean, So Good"
+         android:text="NOTHING TO SEE HERE :V"
          android:textSize="34sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No notes has been found"
+            android:text="no notes has been found"
             android:textSize="14sp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnCreateNote"
-            android:text="Create New one"
+            android:text="Create Notes"
             />
 
 

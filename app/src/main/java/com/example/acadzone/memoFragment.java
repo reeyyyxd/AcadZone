@@ -84,7 +84,7 @@ public class memoFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
         if(memo.isEmpty()) {
-            memo.add("I have aids");
+            memo.add("Hello! Stay Hydrated.");
         }
         arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, memo);
         listView.setAdapter(arrayAdapter);
